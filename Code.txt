@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load the dataset
-file_path = '/mnt/data/dataset.csv'
+file_path = 'dataset.csv'
 df = pd.read_csv(file_path)
 
 # Display the first few rows of the dataset to understand its structure
@@ -20,26 +20,10 @@ plt.title('Correlation Matrix')
 plt.show()
 
 # Identify key factors affecting diabetes based on the correlation matrix
-diabetes_correlation = correlation_matrix['Diabetes']
-print("Correlation with Diabetes:")
-print(diabetes_correlation.sort_values(ascending=False))
-
-
-
-# Compute the correlation matrix
-correlation_matrix = df.corr()
-
-# Visualize the correlation matrix using a heatmap
-plt.figure(figsize=(12, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
-plt.title('Correlation Matrix')
-plt.show()
-
-# Identify key factors affecting diabetes based on the correlation matrix
 diabetes_correlation = correlation_matrix['Diabetes_012']
+diabetes_correlation_sorted = diabetes_correlation.sort_values(ascending=False)
 print("Correlation with Diabetes_012:")
-print(diabetes_correlation.sort_values(ascending=False))
-
+print(diabetes_correlation_sorted)
 
 # Visualize distributions of key factors by diabetes type
 key_factors = ['GenHlth', 'HighBP', 'BMI', 'DiffWalk', 'HighChol', 'Age', 'HeartDiseaseorAttack', 'Income', 'Education', 'PhysActivity']
